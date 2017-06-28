@@ -1,37 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/eng_view"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="22sp"
+        android:background="?attr/colorControlActivated" />
 
-        <TextView
-            android:text="TextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/eng_word"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:textColor="@android:color/black" />
-    </LinearLayout>
+    <TextView
+        android:text="-"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="24sp" />
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-
-        <TextView
-            android:text="TextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rus_word"
-            android:gravity="center"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:textColor="@android:color/black" />
-    </LinearLayout>
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rus_view"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="22sp"
+        android:layout_marginBottom="20dp"
+        android:background="@android:color/holo_green_light" />
 </LinearLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_orange_light">
+
+    <TextView
+        android:text="Добавление нового слова"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/ed_eng_word"
+        android:gravity="center_vertical|center"
+        android:hint="Английское слово"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/ed_rus_word"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:hint="Русское слово"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+    <Button
+        android:text="Добавить"
+        android:layout_width="145dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_words"
+        android:layout_gravity="center"
+        android:onClick="add_new_word"
+        android:background="?android:attr/colorControlNormal" />
+</LinearLayout>
