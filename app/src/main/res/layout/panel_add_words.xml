@@ -5,7 +5,7 @@
     android:background="@android:color/holo_orange_light">
 
     <TextView
-        android:text="Добавление нового слова"
+        android:text="@string/add_new_word"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
@@ -20,7 +20,7 @@
         android:ems="10"
         android:id="@+id/ed_eng_word"
         android:gravity="center_vertical|center"
-        android:hint="Английское слово"
+        android:hint="@string/eng_word"
         android:textSize="20sp"
         android:textColor="@android:color/black"
         android:layout_marginTop="10dp"
@@ -34,15 +34,16 @@
         android:id="@+id/ed_rus_word"
         android:layout_marginBottom="10dp"
         android:gravity="center"
-        android:hint="Русское слово"
+        android:hint="@string/rus_word"
         android:textColor="@android:color/black"
         android:textSize="20sp" />
 
     <Button
-        android:text="Добавить"
+        android:text="@string/add_word"
         android:layout_width="145dp"
         android:layout_height="wrap_content"
         android:id="@+id/add_words"
         android:layout_gravity="center"
-        android:background="?android:attr/colorControlNormal" />
+        android:onClick="add_new_word"
+         />
 </LinearLayout>

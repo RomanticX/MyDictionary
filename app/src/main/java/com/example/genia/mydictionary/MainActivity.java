@@ -21,4 +21,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void btn_eng(View view) {
+        Intent intent = new Intent(this, Main2Activity.class);
+        startActivity(intent);
+    }
 }

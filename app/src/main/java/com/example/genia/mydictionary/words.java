@@ -19,11 +19,20 @@ public class words extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_words);
+        dialog = new Dialog(words.this);
     }
+
+
 
     public void btn_eng(View view) {
         Intent intent = new Intent(this, Main2Activity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_layout_words, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -38,6 +47,7 @@ public class words extends AppCompatActivity {
                 break;
             case R.id.add_words:
                 dialog.setContentView(R.layout.panel_add_words);
+                dialog.show();
 
                 break;
         }
@@ -50,7 +60,7 @@ public class words extends AppCompatActivity {
         s_eng = ed_eng.getText().toString();
         s_rus = ed_rus.getText().toString();
         Log.i("Class_wods", "Check input words: Eng word: "
-                + s_eng.toString() + "Rus word: " + s_rus.toString());
+                + s_eng + "Rus word: " + s_rus);
         dialog.dismiss();
 
     }
