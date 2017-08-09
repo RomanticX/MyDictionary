@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_orange_light">
+    android:background="@android:color/holo_orange_light"
+    android:id="@+id/ll_out">
 
     <TextView
         android:text="@string/add_new_word"
@@ -14,27 +15,27 @@
         android:textColor="@android:color/black" />
 
     <EditText
+        android:id="@+id/ed_eng_word"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
-        android:id="@+id/ed_eng_word"
         android:gravity="center_vertical|center"
         android:hint="@string/eng_word"
-        android:textSize="20sp"
+        android:inputType="text"
         android:textColor="@android:color/black"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp" />
+        android:textSize="20sp" />
 
     <EditText
+        android:id="@+id/ed_rus_word"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/ed_rus_word"
         android:layout_marginBottom="10dp"
+        android:ems="10"
         android:gravity="center"
         android:hint="@string/rus_word"
+        android:inputType="text"
         android:textColor="@android:color/black"
         android:textSize="20sp" />
 
@@ -45,5 +46,5 @@
         android:id="@+id/add_words"
         android:layout_gravity="center"
         android:onClick="add_new_word"
-         />
+        />
 </LinearLayout>

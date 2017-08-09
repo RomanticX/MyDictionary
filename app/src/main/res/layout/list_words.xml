@@ -1,36 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/eng_view"
-        android:gravity="center"
-        android:textColor="@android:color/black"
-        android:textSize="22sp"
-        android:background="?attr/colorControlActivated" />
-
-    <TextView
-        android:text="-"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView2"
+        android:background="@color/colorAccent"
+        android:elevation="1dp"
         android:gravity="center"
-        android:textColor="@android:color/black"
-        android:textSize="24sp" />
-
-    <TextView
         android:text="TextView"
+        android:textColor="@android:color/background_dark"
+        android:textColorLink="@color/colorAccent"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/rus_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rus_view"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/holo_green_light"
         android:gravity="center"
+        android:text="TextView"
         android:textColor="@android:color/black"
-        android:textSize="22sp"
-        android:layout_marginBottom="20dp"
-        android:background="@android:color/holo_green_light" />
+        android:textSize="22sp" />
 </LinearLayout>
