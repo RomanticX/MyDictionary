@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clickable="false"
+        android:divider="@android:color/background_light"
         android:dividerHeight="10dp"
         android:elevation="0dp"
         android:headerDividersEnabled="false"
