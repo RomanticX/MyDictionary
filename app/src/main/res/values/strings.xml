@@ -4,4 +4,5 @@
     <string name="eng_word">Английское слово</string>
     <string name="rus_word">Русское слово</string>
     <string name="add_word">Добавить</string>
+    <string name="add_phr">Добавление фразы</string>
 </resources>

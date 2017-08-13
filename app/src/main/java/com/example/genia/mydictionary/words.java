@@ -13,11 +13,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Layout;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -58,17 +60,47 @@ public class words extends AppCompatActivity {
 
         set_up_list();
 
-
+        lv_words = (ListView) findViewById(R.id.word_list);
+        registerForContextMenu(lv_words);
 
 
     }
 
-
-
-    public void btn_eng(View view) {
-        Intent intent = new Intent(this, Main2Activity.class);
-        startActivity(intent);
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        menu.add(0, 1, 0, "Удалить");
     }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        if (item.getItemId()==1)
+        {
+            AdapterView.AdapterContextMenuInfo acmi = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+            Log.i("words", "Позиция - " + acmi.position);
+
+            Object obj = adapter.getItem(acmi.position);
+
+            Log.i("words", "getItemId - " + obj);
+
+            String s= obj.toString();
+
+            int i_id_word = Integer.parseInt(s);
+            Log.i("phrases", "i_id_word - " + i_id_word);
+            db = dbHelper.getWritableDatabase();
+            int delCount = db.delete(DBHelper.TABLE_NAME, DBHelper.KEY_ID + "= " + i_id_word, null);
+
+            Log.d("words", DBHelper.TABLE_NAME +","+ DBHelper.KEY_ID + "= " + i_id_word);
+
+            Log.d("words", "deleted rows count = " + delCount);
+            dbHelper.close();
+            set_up_list();
+
+        }
+        return super.onContextItemSelected(item);
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -128,7 +160,7 @@ public class words extends AppCompatActivity {
                 Intent intent = new Intent(this, Main2Activity.class);
                 startActivity(intent);
                 break;
-            case R.id.add_words:
+            case R.id.add_text:
                 showDialog(DIALOG);
                 break;
         }
@@ -140,41 +172,55 @@ public class words extends AppCompatActivity {
         s_eng = ed_eng.getText().toString();
         s_rus = ed_rus.getText().toString();
 
-        Log.i("Class_wods", "Check input words: Eng word: "
-                + s_eng + "Rus word: " + s_rus);
+        ed_eng.setText("");
+        ed_eng.requestFocus();
+        ed_rus.setText("");
 
-        dbHelper = new DBHelper(this);
-        //object dbHelper class
+        if (!s_eng.equals("")  && !s_rus.equals(""))
+        {
+            Log.i("words", "Check input words: Eng word: "
+                    + s_eng + "Rus word: " + s_rus);
 
-        //connect to db
-        db = dbHelper.getWritableDatabase();
+            dbHelper = new DBHelper(this);
+            //object dbHelper class
 
-        Cursor c = db.query(DBHelper.TABLE_NAME, null, null, null, null, null, null);
-        Log.d("words", "Number of records in the database: " + c.getCount());
+            //connect to db
+            db = dbHelper.getWritableDatabase();
 
-        Log.d("words", "Put new data in DB...");
-                ContentValues cv = new ContentValues();
-                //write in table new data
+            Cursor c = db.query(DBHelper.TABLE_NAME, null, null, null, null, null, null);
+            Log.d("words", "Number of records in the database: " + c.getCount());
 
-                cv.put(DBHelper.LANGUAGE, "Eng");
-                cv.put(DBHelper.WORD, s_eng);
-                cv.put(DBHelper.TRANSLATE, s_rus);
-                db.insert(DBHelper.TABLE_NAME, null, cv);
-                Log.d("words", "New data is was put in database.");
+            Log.d("words", "Put new data in DB...");
+            ContentValues cv = new ContentValues();
+            //write in table new data
 
-        set_up_list();
-        Log.d("words", "Data  from DB ended");
+            cv.put(DBHelper.LANGUAGE, "Eng");
+            cv.put(DBHelper.WORD, s_eng);
+            cv.put(DBHelper.TRANSLATE, s_rus);
+            db.insert(DBHelper.TABLE_NAME, null, cv);
+            Log.d("words", "New data is was put in database.");
+
+            set_up_list();
+            Log.d("words", "Data  from DB ended");
 
 
-        c.close();
-        dbHelper.close();
+            c.close();
+            dbHelper.close();
 
-        dialog.dismiss();
+            dialog.dismiss();
+        }
+        else
+        {
+            Toast.makeText(words.this, "Введите слова", Toast.LENGTH_SHORT).show();
+        }
+
+
 
 
     }
 
     void set_up_list() {
+        //Method of updating the list
         dbHelper = new DBHelper(this);
         //object dbHelper class
 
@@ -192,7 +238,7 @@ public class words extends AppCompatActivity {
                 Log.d("words", "Data output from DB: ");
                 words_tabl.clear();
                 do {
-                    words_tabl.add(new text_list(c.getString(wordIndex), c.getString(translateIndex)));
+                    words_tabl.add(new text_list(c.getString(wordIndex), c.getString(translateIndex), c.getString(idIndex)));
                     Log.d("words", "ID = " + c.getInt(idIndex) + ", Language = " + c.getString(langIndex)
                             + ", Word = " + c.getString(wordIndex) + ", Translate = " + c.getString(translateIndex));
                     Log.d("words", "____________________________________________________________________________________________");
@@ -204,7 +250,7 @@ public class words extends AppCompatActivity {
             lv_words = (ListView) findViewById(R.id.word_list);
             lv_words.setAdapter(adapter);
             Log.i("t_table", "Set up a list");
-            registerForContextMenu(lv_words);
+
         }
         else
         {

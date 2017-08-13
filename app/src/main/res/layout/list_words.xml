@@ -9,21 +9,20 @@
         android:id="@+id/eng_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
+        android:background="@android:color/holo_orange_light"
         android:elevation="1dp"
         android:gravity="center"
         android:text="TextView"
-        android:textColor="@android:color/background_dark"
+        android:textColor="@android:color/background_light"
         android:textSize="22sp" />
 
     <TextView
         android:id="@+id/rus_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@android:color/holo_green_light"
+        android:background="@android:color/holo_orange_light"
         android:gravity="center"
         android:text="TextView"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textSize="22sp" />
 </LinearLayout>

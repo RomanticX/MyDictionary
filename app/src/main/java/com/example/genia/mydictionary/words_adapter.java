@@ -62,8 +62,8 @@ public class words_adapter extends BaseAdapter {
 
         // заполняем View в пункте списка данными из товаров: наименование, цена
         // и картинка
-        ((TextView) view.findViewById(R.id.eng_view)).setText(p.orig_w);
-        ((TextView) view.findViewById(R.id.rus_view)).setText(p.transl_w);
+        ((TextView) view.findViewById(R.id.eng_view)).setText(p.orig_text);
+        ((TextView) view.findViewById(R.id.rus_view)).setText(p.transl_text);
 
         Log.i("TimeAdapter", "заполняем View");
         return view;
@@ -71,7 +71,7 @@ public class words_adapter extends BaseAdapter {
 
     // товар по позиции
     private text_list getProduct(int position) {
-        Log.i("prof_adapter", "товар по позиции");
+        Log.i("prof_adapter", "Слово по позиции");
         return ((text_list) getItem(position));
     }
 }

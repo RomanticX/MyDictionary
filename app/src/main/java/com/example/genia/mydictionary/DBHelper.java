@@ -14,10 +14,12 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "DICTIONARY";
     public static final String TABLE_NAME = "WORDS";
+    public static final String TABLE_PHRASES = "PHRASES";
 
     public static final String KEY_ID = "id";
     public static final String LANGUAGE = "lang";
     public static final String WORD = "word";
+    public static final String PHRASE = "phrase";
     public static final String TRANSLATE = "translate";
 
 
@@ -28,12 +30,22 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         Log.d("DBHelper", "---Create a new database---");
+
         //create new db
         db.execSQL("create table " + TABLE_NAME + "(" + KEY_ID +" integer primary key autoincrement," + LANGUAGE + " text,"
                 + WORD +" text," + TRANSLATE +" text" + ")");
 
+        db.execSQL("create table " + TABLE_PHRASES + "(" + KEY_ID +" integer primary key autoincrement," + LANGUAGE + " text,"
+                + PHRASE +" text," + TRANSLATE +" text" + ")");
+
+
+
+
         Log.i("DBHelper", "create table " + TABLE_NAME + "(" + KEY_ID +" integer primary key autoincrement," + LANGUAGE + " text,"
                 + WORD +" text," + TRANSLATE +" text" + ")");
+
+        Log.i("DBHelper", "create table " + TABLE_PHRASES + "(" + KEY_ID +" integer primary key autoincrement," + LANGUAGE + " text,"
+                + PHRASE +" text," + TRANSLATE +" text" + ")");
 
     }
 

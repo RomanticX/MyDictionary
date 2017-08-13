@@ -5,12 +5,17 @@ package com.example.genia.mydictionary;
  */
 
 public class text_list {
-        String lang, orig_w, transl_w;
+        String lang, orig_text, transl_text, id_text;
 
-    text_list(String _org_w, String _transl_w)
+    text_list(String _orig_text, String _transl_text, String _id_text)
     {
-        orig_w = _org_w;
-        transl_w = _transl_w;
+        orig_text = _orig_text;
+        transl_text = _transl_text;
+        id_text = _id_text;
     }
 
+    @Override
+    public String toString() {
+        return id_text;
+    }
 }
