@@ -93,8 +93,12 @@ public class words extends AppCompatActivity {
             Log.d("words", DBHelper.TABLE_NAME +","+ DBHelper.KEY_ID + "= " + i_id_word);
 
             Log.d("words", "deleted rows count = " + delCount);
+
             dbHelper.close();
+
             set_up_list();
+
+
 
         }
         return super.onContextItemSelected(item);
@@ -157,7 +161,7 @@ public class words extends AppCompatActivity {
         switch (id)
         {
             case R.id.to_main:
-                Intent intent = new Intent(this, Main2Activity.class);
+                Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 break;
             case R.id.add_text:
@@ -238,7 +242,8 @@ public class words extends AppCompatActivity {
                 Log.d("words", "Data output from DB: ");
                 words_tabl.clear();
                 do {
-                    words_tabl.add(new text_list(c.getString(wordIndex), c.getString(translateIndex), c.getString(idIndex)));
+                    words_tabl.add(new text_list(c.getString(wordIndex), c.getString(translateIndex),
+                            c.getString(idIndex)));
                     Log.d("words", "ID = " + c.getInt(idIndex) + ", Language = " + c.getString(langIndex)
                             + ", Word = " + c.getString(wordIndex) + ", Translate = " + c.getString(translateIndex));
                     Log.d("words", "____________________________________________________________________________________________");
@@ -252,10 +257,18 @@ public class words extends AppCompatActivity {
             Log.i("t_table", "Set up a list");
 
         }
+
         else
         {
+            words_tabl.clear();
+            adapter = new words_adapter(this, words_tabl);
+            Log.i("words", "Crate adapter");
+            lv_words = (ListView) findViewById(R.id.word_list);
+            lv_words.setAdapter(adapter);
             Toast.makeText(words.this, "Список слов пуст", Toast.LENGTH_LONG).show();
         }
+        dbHelper.close();
+
 
     }
 

@@ -17,10 +17,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".Main2Activity" />
-        <activity android:name=".phrases" />
-        <activity android:name=".words" />
+        <activity android:name=".MainActivity"
+            android:label="Language"
+            />
+        <activity android:name=".Main2Activity"
+            android:label="Section"
+            />
+        <activity android:name=".phrases"
+            android:label="Phrases"
+            />
+        <activity android:name=".words"
+            android:label="Words"
+            />
     </application>
 
 </manifest>

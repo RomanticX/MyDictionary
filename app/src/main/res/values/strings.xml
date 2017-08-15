@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Dictionary</string>
+    <string name="app_name">MyDictionary</string>
     <string name="add_new_word">Добавление нового слова</string>
     <string name="eng_word">Английское слово</string>
     <string name="rus_word">Русское слово</string>

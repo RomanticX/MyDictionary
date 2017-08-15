@@ -74,12 +74,12 @@ public class phrases extends AppCompatActivity {
 
             String s= obj.toString();
 
-            int i_id_word = Integer.parseInt(s);
-            Log.i("phrases", "i_id_word - " + i_id_word);
+            int i_id_phr = Integer.parseInt(s);
+            Log.i("phrases", "i_id_word - " + i_id_phr);
 
             db = dbHelper.getWritableDatabase();
-            int delCount = db.delete(DBHelper.TABLE_PHRASES, DBHelper.KEY_ID + "= " + i_id_word, null);
-            Log.d("phrases", DBHelper.TABLE_PHRASES +","+ DBHelper.KEY_ID + "= " + i_id_word);
+            int delCount = db.delete(DBHelper.TABLE_PHRASES, DBHelper.KEY_ID + "= " + i_id_phr, null);
+            Log.d("phrases", DBHelper.TABLE_PHRASES +","+ DBHelper.KEY_ID + "= " + i_id_phr);
             Log.d("phrases", "deleted rows count = " + delCount);
             dbHelper.close();
             set_up_list();
@@ -138,7 +138,7 @@ public class phrases extends AppCompatActivity {
         switch (id)
         {
             case R.id.to_main:
-                Intent intent = new Intent(this, Main2Activity.class);
+                Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 break;
             case R.id.add_text:
@@ -213,14 +213,15 @@ public class phrases extends AppCompatActivity {
             if (c.moveToFirst()) {
                 int idIndex = c.getColumnIndex(DBHelper.KEY_ID);
                 int langIndex = c.getColumnIndex(DBHelper.LANGUAGE);
-                int wordIndex = c.getColumnIndex(DBHelper.PHRASE);
+                int phrIndex = c.getColumnIndex(DBHelper.PHRASE);
                 int translateIndex = c.getColumnIndex(DBHelper.TRANSLATE);
                 Log.d("phrases", "Data output from DB: ");
                 phrases_tabl.clear();
                 do {
-                    phrases_tabl.add(new text_list(c.getString(wordIndex), c.getString(translateIndex), c.getString(idIndex)));
+                    phrases_tabl.add(new text_list(c.getString(phrIndex), c.getString(translateIndex),
+                            c.getString(idIndex)));
                     Log.d("phrases", "ID = " + c.getInt(idIndex) + ", Language = " + c.getString(langIndex)
-                            + ", Word = " + c.getString(wordIndex) + ", Translate = " + c.getString(translateIndex));
+                            + ", Word = " + c.getString(phrIndex) + ", Translate = " + c.getString(translateIndex));
                     Log.d("phrases", "____________________________________________________________________________________________");
                 } while (c.moveToNext());
 
@@ -234,7 +235,12 @@ public class phrases extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(phrases.this, "Список слов пуст", Toast.LENGTH_LONG).show();
+            phrases_tabl.clear();
+            adapter = new words_adapter(this, phrases_tabl);
+            Log.i("phrases", "Crate adapter");
+            lv_phrase = (ListView) findViewById(R.id.phrase_list);
+            lv_phrase.setAdapter(adapter);
+            Toast.makeText(phrases.this, "Список фраз пуст", Toast.LENGTH_LONG).show();
         }
 
     }
